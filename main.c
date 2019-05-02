@@ -13,17 +13,17 @@
 
 int main(){
     const int rpp = 15; // rays per pixel
-    const int width = 1000; //Width and height of the image generated
-    const int height = 1000;
+    const int width = 200; //Width and height of the image generated
+    const int height = 200;
 
     camera cam;
 
-    cam.fov.x = 110; //Field of view of the y direction in degrees
-    cam.fov.y = 110;
+    cam.fov.x = 90; //Field of view of the y direction in degrees
+    cam.fov.y = 90;
 
-    cam.pos.x = -2;
+    cam.pos.x = -2.5;
     cam.pos.y = 0;
-    cam.pos.z = -1;
+    cam.pos.z = -3;
 
     cam.dir.x = 80;
     cam.dir.y = 5;
@@ -46,7 +46,10 @@ int main(){
                 double yaw = ((((k/rpp)+j)/(double)width)-.5)*fov_rad.x + dir_rad.x;
                 double pitch = ((((k/rpp)+i)/(double)height)-.5)*fov_rad.y + dir_rad.y;
                 vector direction = spVector(1, yaw, pitch);
-                pixels[k] = ray(cam.pos, direction, scene, 20);
+                vector position;
+                position.x = cam.pos.x + ((j-(width/2))/(4*width));
+                position.y = cam.pos.y + ((i-(height/2))/(4*height));
+                pixels[k] = ray(position, direction, scene, 20);
             }
             pixel final_pixel = pixelAverage(pixels, rpp);
             image[i][j][2] = final_pixel.r * 255;
