@@ -1,0 +1,12 @@
+//DEPRECATED
+
+typedef struct OBJECT
+{
+    double x,y,z;
+    double * surface;
+    double r,g,b;
+    double diffuse;
+    double emissivity;
+    double transparency;
+    double refractivity;
+} object;

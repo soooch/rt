@@ -1,0 +1,11 @@
+# no extension
+*
+!/**/
+!*.*
+
+# .vscode conf
+.vscode
+*.dSYM
+
+# mac file conf
+.DS_Store
