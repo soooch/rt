@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <math.h>
+#include <time.h>
 
 // Struct for vector, it's just one point cause that's what a vector is
 typedef struct VECTOR {
@@ -60,8 +61,7 @@ vector normalizeVector(vector A) {
     return multVector(A, 1 / norm);
 }
 
-vector randVector(int seed) {
-    srand(seed);
+vector randVector() {
     vector randV = {rand() % 10, rand() % 10, rand() % 10};
     return normalizeVector(randV);
 }
@@ -71,7 +71,7 @@ vector randVector(int seed) {
 // yaw and pitch up to PI/2
 // multiplied by rand
 vector perturbVector(vector A, double diffuse) {
-    vector rand_vector = randVector((int)((A.x+A.y+A.z+diffuse)*3452));
+    vector rand_vector = randVector();
     vector cross_vector = normalizeVector(crossVector(A, rand_vector));
     double s = ((double)(rand() % 1001)) / 1000;
     double r = ((double)(rand() % 1001)) / 1000;

@@ -16,6 +16,13 @@ typedef struct TRIANGLE {
     vector normal;
 } triangle;
 
+typedef struct BOX {
+    vector min;
+    vector max;
+    box * children[2];
+    triangle * triangles[];
+} box;
+
 typedef struct OBJECT {
     pixel color;        // may move this back to triangle, but easier to hack with here for now
     double diffuse;         // randomness of reflection
