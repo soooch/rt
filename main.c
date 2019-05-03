@@ -64,7 +64,7 @@ int main(){
             }
         }
     }
-    //printf("]");
+    printf("]");
     generateBitmapImage((unsigned char *)image, height, width, imageFileName);
     printf("\nImage generated and stored at %s\n", imageFileName);
     return 0;
