@@ -32,3 +32,10 @@ Tree model for scenes (see branch scene_tree)
         tri   tri  tri  tri
         tri   tri  tri  tri
 ~~~~
+
+Probable triangles array for each pixel
+- make array of size bounces
+- first "exploratory" ray populates array with triangles it visited along its path
+- next rays will try those triangles first (depending on current bounce)
+- if ray doesn't intersect with candidate triangle
+  - will progress upwards throught scene tree to find box it fits in then start traversing down from there
