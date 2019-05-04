@@ -75,14 +75,13 @@ pixel multPixel(pixel a, pixel b) {
     return c;
 }
 
-pixel ray(vector position, vector direction, scene * cur_scene, int bounces) {
+pixel ray(vector position, vector direction, box * cur_box, int bounces) {
     pixel final = {0, 0, 0};
     if (bounces <= 0) {
         return final;
     }
     double closest_dist = -1;
     triangle * closest_tri;
-    object * closest_obj;
     for (int i=0; i<cur_scene->obj_count; i++) {
         for (int j=0; j<cur_scene->objects[i]->tri_count; j++) {
             double dist = collision(*cur_scene->objects[i]->triangles[j], position, direction);
@@ -98,17 +97,17 @@ pixel ray(vector position, vector direction, scene * cur_scene, int bounces) {
         }
     }
     if (closest_dist > 0) {
-    if (closest_obj->emissive) {
-        return closest_obj->color;
-    }
-    vector new_pos = addVector(position, multVector(normalizeVector(direction), closest_dist));
-    final = multPixel(
-            closest_obj->color, 
-            ray(new_pos, 
-                perturbVector(bounceVector(direction, closest_tri->normal), closest_obj->diffuse), 
-                //bounceVector(direction, closest_tri->normal), 
-                cur_scene, bounces-1)
-            );
+        if (closest_obj->emissive) {
+            return closest_obj->color;
+        }
+        vector new_pos = addVector(position, multVector(normalizeVector(direction), closest_dist));
+        final = multPixel(
+                closest_obj->color, 
+                ray(new_pos, 
+                    perturbVector(bounceVector(direction, closest_tri->normal), closest_obj->diffuse), 
+                    //bounceVector(direction, closest_tri->normal), 
+                    cur_scene, bounces-1)
+                );
     }
     return final;
 }

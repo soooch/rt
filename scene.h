@@ -17,6 +17,8 @@ typedef struct TRIANGLE {
     pixel color;
     double diffuse;
     int emissive;
+    //double transparency;
+    //double refractivity;
 } triangle;
 
 typedef struct BOX {
@@ -27,11 +29,6 @@ typedef struct BOX {
     int tri_count;                 // usually 12
     triangle * triangles[];
 } box;
-
-typedef struct SCENE {
-    int obj_count;
-    object * objects[];
-} scene;
 
 // Returns the normal vector of triangle t
 vector normalTriangle(triangle t) {

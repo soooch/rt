@@ -1,9 +1,33 @@
 8
 objects/cube.object
+1 .2 .2
+.2 0
+0 0 0
 objects/light.object
+1 1 1
+.05 0
+.25 2 -2
 objects/wall1.object
+1 .2 .2
+.4 0
+0 0 0
 objects/wall2.object
+.1 .1 1
+.6 0
+0 0 0
 objects/wall3.object
+1 .5 .5
+.6 0
+0 0 0
 objects/wall4.object
+.5 .5 1
+.4 0
+0 0 0
 objects/ceiling.object
+.9 .9 1
+.1 1
+0 0 0
 objects/wall6.object
+.1 1 .1
+.3 0
+0 0 0
