@@ -84,7 +84,7 @@ pixel ray(vector position, vector direction, scene * cur_scene, int bounces) {
     triangle * closest_tri;
     object * closest_obj;
     for (int i=0; i<cur_scene->obj_count; i++) {
-        for (int j=0; j<cur_scene->objects[i]->tri_count; j++) {
+        for (int j = 0; j < cur_scene->objects[i]->tri_count; j++) {
             double dist = collision(*cur_scene->objects[i]->triangles[j], position, direction);
             if (dist > 0) {
                 // TODO: actually take into account obj characteristics

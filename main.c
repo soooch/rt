@@ -7,30 +7,30 @@
 #include "camera.h"
 #include "scene.h"
 #include "vector.h"
-#include "oldrtx.h"
+#include "rtx.h"
 
 #define PI 3.1415926535
 
 int main(){
     const int rpp = 100; // rays per pixel
-    const int width = 400; //Width and height of the image generated
-    const int height = 400;
+    const int width = 1000; //Width and height of the image generated
+    const int height = 1000;
 
     camera cam;
 
     cam.fov.x = 90; //Field of view of the y direction in degrees
     cam.fov.y = 90;
 
-    cam.pos.x = -3;
+    cam.pos.x = -2.5;
     cam.pos.y = 0;
-    cam.pos.z = -3;
+    cam.pos.z = -3.8;
 
     cam.dir.x = 30;
     cam.dir.y = 5;
 
     cam.range = .65;
 
-    scene * scene = sceneGen("scene1.scene");
+    scene * scene = sceneGen("scene1.scene");   // TODO: check to make sure this is executing fully before the loop
 
     unsigned char image[height][width][3];
     char* imageFileName = "results/rtx.bmp";
@@ -66,6 +66,7 @@ int main(){
                     printf("█");
                 }
                 progress_plus = progress + 1;
+            }
         }
     }
     printf("\r 100%% [██████████]");
