@@ -14,22 +14,19 @@ typedef struct TRIANGLE {
     vector b;
     vector c;
     vector normal;
+    pixel color;
+    double diffuse;
+    int emissive;
 } triangle;
 
 typedef struct BOX {
     vector min;
     vector max;
-    box * children[2];
+    int is_leaf;
+    struct BOX * children[2];
+    int tri_count;                 // usually 12
     triangle * triangles[];
 } box;
-
-typedef struct OBJECT {
-    pixel color;        // may move this back to triangle, but easier to hack with here for now
-    double diffuse;         // randomness of reflection
-    int emissive;
-    int tri_count;
-    triangle * triangles[];
-} object;
 
 typedef struct SCENE {
     int obj_count;
