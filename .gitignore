@@ -5,9 +5,12 @@
 
 # .vscode conf
 .vscode
-*.dSYM
 
 # mac file conf
 .DS_Store
+*.dSYM
+*.lock
+*.dpi
 
+# don't push binaries
 bin

@@ -42,6 +42,8 @@ int main(){
     dir_rad.y = (cam.dir.y/180)*PI;
     printf(" 00%% [          ]");
     int num_pix = 0;
+    int progress = 0;
+    int progress_plus = 1;
     #pragma omp parallel for collapse(2)
     for (int i=0; i<height; i++){
         for (int j=0; j<width; j++){
@@ -57,14 +59,16 @@ int main(){
             image[i][j][1] = expose(final_pixel.g, cam.range);
             image[i][j][0] = expose(final_pixel.b, cam.range);
 			num_pix++;
-            int progress = (double)((double)num_pix/(double)(width*height))*10;
-            printf("\r %d0%% [", progress + 1);
-            for (int i = 0; i < progress + 1; i++) {
-                printf("█");
-            }
+            progress = (double)((double)num_pix/(double)(width*height))*10;
+            printf("\r %d0%% [", progress);
+            if (progress >= progress_plus) {
+                for (int i = 1; i < progress + 1; i++) {
+                    printf("█");
+                }
+                progress_plus = progress + 1;
         }
     }
-    printf("]");
+    printf("\r 100%% [██████████]");
     generateBitmapImage((unsigned char *)image, height, width, imageFileName);
     printf("\nImage generated and stored at %s\n", imageFileName);
     return 0;
