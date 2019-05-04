@@ -38,4 +38,5 @@ Probable triangles array for each pixel
 - first "exploratory" ray populates array with triangles it visited along its path
 - next rays will try those triangles first (depending on current bounce)
 - if ray doesn't intersect with candidate triangle
-  - will progress upwards throught scene tree to find box it fits in then start traversing down from there
+  - will progress upwards throught scene tree to find lowest box it intersects with
+  - then start traversing down from there
