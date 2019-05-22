@@ -2,9 +2,9 @@
 
 ![alt text](results/statue.bmp "example image")
 
-It does work though, so we go that going for us. Built in pure C.  
+It does work though. Built in pure C.  
 
-Our goal with this project was to build a raytracer from scratch, without following a guide, and only referencing the minimum amount of math we couldn't figure out ourselves.
+The goal with this project was to build a raytracer from scratch, without following a guide, and only referencing the minimum amount of math I couldn't figure out myself.
 
 ### Ideas:
 Tree model for scenes (see branch scene_tree)
