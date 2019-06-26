@@ -4,7 +4,7 @@
 
 It does work though. Built in pure C.  
 
-The goal with this project was to build a raytracer from scratch, without following a guide, and only referencing the minimum amount of math I couldn't figure out myself.
+The goal with this project was to build a raytracer from scratch, without following a guide, only referencing the minimum required math.
 
 ### Ideas:
 Tree model for scenes (see branch scene_tree)
